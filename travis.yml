@@ -1,7 +1,0 @@
-language: java
-
-env:
-- DTRAVIS_JOB_ID=$TRAVIS_JOB_ID
-
-after_success:
-- mvn clean test jacoco:report coveralls:report
