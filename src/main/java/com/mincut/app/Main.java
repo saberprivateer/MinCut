@@ -47,7 +47,7 @@ public class Main
         //Now With Coverage?
         log("End of Code");
     }
-
+/*
     public static int[] data() {
         System.out.println("Reading File from Java code");
         //Name of the file
@@ -78,4 +78,5 @@ public class Main
         }).toArray();
         return arr;
     }
+*/
 }
