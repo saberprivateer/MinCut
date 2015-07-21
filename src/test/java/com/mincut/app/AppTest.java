@@ -1,16 +1,12 @@
 package com.mincut.app;
 
-import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.apache.logging.log4j.*;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.PrintStream;
-import java.util.Arrays;
 //import org.junit.Test;
 
 public class AppTest {
