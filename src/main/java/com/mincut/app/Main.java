@@ -2,7 +2,6 @@ package com.mincut.app;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.function.ToIntFunction;
 
 public class Main
