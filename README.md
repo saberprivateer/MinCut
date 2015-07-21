@@ -1,0 +1,2 @@
+# MinCut
+For Algorithms
