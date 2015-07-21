@@ -2,6 +2,7 @@ package com.mincut.app;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.function.ToIntFunction;
 
 public class Main
@@ -28,7 +29,7 @@ public class Main
         int[] testcase3 = new int[]{1};
         int[] testcaseforum = new int[]{7, 5, 1, 4, 8, 3, 10, 2, 6, 9};
         int[] testcaseforum2 = new int[]{8, 10, 1, 9, 7, 2, 6, 3, 5, 4};
-
+        System.out.println(Arrays.toString(testcase));
 
         /*
         Main.countcomparison = 0;
@@ -44,8 +45,8 @@ public class Main
         */
 
 
-        //Now With Coverage?
-        log("End of Code");
+                //Now With Coverage?
+                log("End of Code");
     }
 /*
     public static int[] data() {
