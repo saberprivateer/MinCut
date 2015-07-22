@@ -1,8 +1,12 @@
 package com.mincut.app;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Main {
@@ -14,28 +18,27 @@ public class Main {
         System.out.println(args.toString());
     }
 
-    public static void mincut() {
+    public static void mincut(int cuts, String datafile) {
+
 
     }
 
-    public static void testcases() {
-        int[] testcase = new int[]{3, 8, 2, 5, 1, 4, 7, 6};
-        int[] testcase2 = new int[]{2, 1};
-        int[] testcase3 = new int[]{1};
-        int[] testcaseforum = new int[]{7, 5, 1, 4, 8, 3, 10, 2, 6, 9};
-        int[] testcaseforum2 = new int[]{8, 10, 1, 9, 7, 2, 6, 3, 5, 4};
+    public static void testcases(int test1, int test2, int test3) {
+        mincut(test1, "testcase1");
+        mincut(test2, "testcase2");
+        mincut(test3, "testcase3");
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws URISyntaxException {
         // write your code here
         System.out.println("Begin Code");
 
 
-
         ArrayList<int[]> nodes = new ArrayList<>();
-        parsedata(nodes);
-        testcases();
+        parsedata(nodes, "kargerMinCut");
+        int test1 = 0, test2 = 0, test3 = 0;
+        testcases(test1, test2, test3);
 
 
         //System.out.println(Arrays.toString(grph[0]));
@@ -43,14 +46,14 @@ public class Main {
 
         //mincut(arr);
 
-
+        //System.out.println(System.getProperty("user.dir"));
         //Now With Coverage?
         log("End of Code");
     }
 
-    public static void parsedata(ArrayList<int[]> nodes) {
+    public static void parsedata(ArrayList<int[]> nodes, String datafile) throws URISyntaxException {
         log("Read the text file as an array of strings");
-        String[] arr = data();
+        String[] arr = data(datafile);
         //System.out.println(arr[0]);
 
         //log(arr.length+" is the length of arr");
@@ -77,16 +80,18 @@ public class Main {
         */
     }
 
-    public static String[] data() {
-        System.out.println("Reading File from Java code");
+    public static String[] data(String datafile) throws URISyntaxException {
+        System.out.println("Opening File");
         //Name of the file
-        String fileName = "/Users/dkamerling/Desktop/kargerMinCut.txt";
+        String filePath = new File("").getAbsolutePath();
+        //System.out.println (filePath);
+        //String fileName = "/src/Files/kargerMinCut.txt";
         ArrayList<String> integers = new ArrayList<String>();
         ArrayList<Integer> ints = new ArrayList<Integer>();
         String[] arr = new String[200];
         try {
             //Create object of FileReader
-            FileReader inputFile = new FileReader(fileName);
+            FileReader inputFile = new FileReader(filePath + "/src/Files/" + datafile + ".txt");
             //Instantiate the BufferedReader Class
             BufferedReader bufferReader = new BufferedReader(inputFile);
             //Variable to hold the one line data

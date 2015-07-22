@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class AppTest {
 
@@ -31,18 +33,39 @@ public class AppTest {
     }
 
     @Test
-    public void testData() {
+    public void testParser() throws URISyntaxException {
         Main tester = new Main();
-        String[] arr = Main.data();
-        Assert.assertEquals("Reading a graph of 200 lines",arr.length,200);
+        ArrayList<int[]> nodes = new ArrayList<>();
+        Main.parsedata(nodes, "kargerMinCut");
+        Assert.assertEquals("Can find a number in the text file", 154, nodes.get(9)[3]);
+    }
+
+    @Test
+    public void testData() throws URISyntaxException {
+        String[] arr = Main.data("kargerMinCut");
+        Assert.assertEquals("Reading a graph of 200 lines", arr.length, 200);
+        Assert.assertTrue(!arr[3].isEmpty());
     }
 
     @Test
     public void testMinCut() {
-        Main tester = new Main();
-        Main.mincut();
+        int cuts = 0;
+        Main.mincut(cuts,"testcase1");
         Assert.assertTrue(true);
     }
+
+    @Test
+    public void testTestcase() {
+        int test1 = 0;
+        int test2 = 0;
+        int test3 = 0;
+        Main.testcases(test1, test2, test3);
+        Assert.assertEquals("First test case is 2 ", test1, 2);
+        Assert.assertEquals("Second test case is 1 ",test2,1);
+        Assert.assertEquals("Third test case is 3 ",test1,3);
+    }
+
+
 
     @Test
     public void testLog() {
