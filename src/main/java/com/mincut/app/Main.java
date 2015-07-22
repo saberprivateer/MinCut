@@ -15,9 +15,12 @@ public class Main {
         System.out.println(args.toString());
     }
 
-    public static void mincut(int cuts, ArrayList<int[]> nodes) {
+    public static void mincut(ArrayList<int[]> nodes) {
         //While there are more than 2 vertices
+        //log("The list as program starts");
+        //plist(nodes);
         if (nodes.size() == 2) {
+            int cuts;
             cuts = nodes.get(0).length - 1;
             Main.minlen = Math.min(Main.minlen,cuts);
             log("the number of cuts is " + cuts + ".");
@@ -37,8 +40,10 @@ public class Main {
             int[] contract = nodes.get(u);
             int pairindex;
             nodes.remove(u);
+            //log("the list after nixing the chosen node");
+            //plist(nodes);
             boolean dupes = true;
-            //log(Arrays.toString(contract));
+            //log("The removed node looks like this: "+Arrays.toString(contract));
             for (int i = 1; i < contract.length; i++) {
                 //Iterate to replace the vertex for each node associated with cut
                 int swap = contract[i];
@@ -50,7 +55,6 @@ public class Main {
                             }
                         }
                         if ((nodes.get(j)[0] == contract[v])&&dupes) {
-
                             //Combine the two nodes
                             int[] newvertex = new int[contract.length + nodes.get(j).length - 1];
                             System.arraycopy(nodes.get(j), 0, newvertex, 0, nodes.get(j).length);
@@ -91,28 +95,25 @@ public class Main {
                 log(Arrays.toString(p));
             }
             */
-            mincut(cuts, nodes);
+
+            mincut(nodes);
         }
     }
 
-    public static void testcases() throws URISyntaxException, IOException {
-        ArrayList<int[]> nodes1 = new ArrayList<>();
-        ArrayList<int[]> nodes2 = new ArrayList<>();
-        ArrayList<int[]> nodes3 = new ArrayList<>();
-
-        parsedata(nodes1, "testcase1", "space");
-        //parsedata(nodes2, "testcase2", "space");
-        //parsedata(nodes3, "testcase3", "space");
-        int test1 = 0;
-        for (int i = 0; i<100;i++) {
-            ArrayList<int[]> repeat = new ArrayList<>(nodes1);
-            mincut(test1, repeat);
-            //log(test1 + " has become..." + repeat.size() + " is the size");
-            //mincuts = Math.min(mincuts,test1);
+    public static void plist(ArrayList<int[]> arl) {
+        for (int[] p : arl) {
+            log(Arrays.toString(p));
         }
-        //log("The minimum was found to be "+mincuts+".");
-        //mincut(test2, nodes2);
-        //mincut(test3, nodes3);
+    }
+
+    public static void testcases(String al, String dl) throws URISyntaxException, IOException {
+        ArrayList<int[]> nodes1 = new ArrayList<>();
+
+        for (int i = 0; i<100;i++) {
+            nodes1.clear();
+            parsedata(nodes1, al, dl);
+            mincut(nodes1);
+        }
         log(Main.minlen+" is the min length");
     }
 
@@ -123,7 +124,7 @@ public class Main {
         ArrayList<int[]> nodes = new ArrayList<>();
         parsedata(nodes, "kargerMinCut", "tab");
         int test1 = 0, test2 = 0, test3 = 0;
-        testcases();
+        testcases("kargerMinCut","tab");
         //log(Arrays.toString(nodes.get(0)));
 
 
@@ -144,7 +145,7 @@ public class Main {
 
         //log(arr.length+" is the length of arr");
 
-        log("Convert the strings of " + datafile + " into integer arrays in a list");
+        //log("Convert the strings of " + datafile + " into integer arrays in a list");
         //int[][] grph = new int[200][200];
         //log("the length of arr is " + arr.length);
         for (int i = 0; i < arr.length; i++) {
@@ -174,7 +175,7 @@ public class Main {
     }
 
     public static String[] data(String datafile) throws URISyntaxException, IOException {
-        System.out.println("Opening " + datafile + ".");
+        //System.out.println("Opening " + datafile + ".");
         //Name of the file
         String filePath = new File("").getAbsolutePath();
         String fullPath = filePath + "/src/Files/" + datafile + ".txt";

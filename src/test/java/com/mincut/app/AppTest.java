@@ -35,7 +35,6 @@ public class AppTest {
 
     @Test
     public void testParser() throws URISyntaxException, IOException {
-        Main tester = new Main();
         ArrayList<int[]> nodes = new ArrayList<>();
         Main.parsedata(nodes, "kargerMinCut","tab");
         Assert.assertEquals("Can find a number in the text file", 154, nodes.get(9)[3]);
@@ -50,36 +49,28 @@ public class AppTest {
 
     @Test
     public void testMinCut() throws URISyntaxException, IOException {
-        int cuts = 0;
-        ArrayList<int[]> nodes = new ArrayList<int[]>();
+        ArrayList<int[]> nodes = new ArrayList<>();
         Main.parsedata(nodes,"testcase1","space");
-        Main.mincut(cuts, nodes);
+        Main.mincut(nodes);
         Assert.assertTrue(true);
     }
 
     @Test
     public void testTestcase() throws URISyntaxException, IOException {
-        int test1 = 0;
-        int test2 = 0;
-        int test3 = 0;
-        Main.testcases();
-        Assert.assertEquals("First test case is 2 ", test1, 2);
-        Assert.assertEquals("Second test case is 1 ",test2,1);
-        Assert.assertEquals("Third test case is 3 ",test1,3);
+        Main.testcases("testcase1","space");
+        Assert.assertEquals("First test case is 2 ", Main.minlen, 2);
+        //Assert.assertEquals("Second test case is 1 ",test2,1);
+        //Assert.assertEquals("Third test case is 3 ",test1,3);
     }
-
-
 
     @Test
     public void testLog() {
-        Main tester = new Main();
         Main.log(9);
         Assert.assertEquals("Ints work", Integer.toString(9), outContent.toString().trim());
     }
 
     @Test
     public void testLogtext() {
-        Main tester = new Main();
         Main.log("hello");
         Assert.assertEquals("Text with quotes works", "hello", outContent.toString().trim());
     }
