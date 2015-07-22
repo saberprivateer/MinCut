@@ -30,7 +30,14 @@ public class AppTest {
         Assert.assertTrue(true);
     }
 
-    @org.junit.Test
+    @Test
+    public void testData() {
+        Main tester = new Main();
+        String[] arr = Main.data();
+        Assert.assertEquals("Reading a graph of 200 lines",arr.length,200);
+    }
+
+    @Test
     public void testMinCut() {
         Main tester = new Main();
         Main.mincut();
