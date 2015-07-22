@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -33,33 +34,35 @@ public class AppTest {
     }
 
     @Test
-    public void testParser() throws URISyntaxException {
+    public void testParser() throws URISyntaxException, IOException {
         Main tester = new Main();
         ArrayList<int[]> nodes = new ArrayList<>();
-        Main.parsedata(nodes, "kargerMinCut");
+        Main.parsedata(nodes, "kargerMinCut","tab");
         Assert.assertEquals("Can find a number in the text file", 154, nodes.get(9)[3]);
     }
 
     @Test
-    public void testData() throws URISyntaxException {
+    public void testData() throws URISyntaxException, IOException {
         String[] arr = Main.data("kargerMinCut");
         Assert.assertEquals("Reading a graph of 200 lines", arr.length, 200);
         Assert.assertTrue(!arr[3].isEmpty());
     }
 
     @Test
-    public void testMinCut() {
+    public void testMinCut() throws URISyntaxException, IOException {
         int cuts = 0;
-        Main.mincut(cuts,"testcase1");
+        ArrayList<int[]> nodes = new ArrayList<int[]>();
+        Main.parsedata(nodes,"testcase1","space");
+        Main.mincut(cuts, nodes);
         Assert.assertTrue(true);
     }
 
     @Test
-    public void testTestcase() {
+    public void testTestcase() throws URISyntaxException, IOException {
         int test1 = 0;
         int test2 = 0;
         int test3 = 0;
-        Main.testcases(test1, test2, test3);
+        Main.testcases();
         Assert.assertEquals("First test case is 2 ", test1, 2);
         Assert.assertEquals("Second test case is 1 ",test2,1);
         Assert.assertEquals("Third test case is 3 ",test1,3);
